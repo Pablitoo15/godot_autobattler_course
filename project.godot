@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Godot Autobattler Course"
 run/main_scene="res://scenes/arena/arena.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.png"
 
 [display]
@@ -23,6 +23,12 @@ window/size/window_width_override=1300
 window/size/window_height_override=750
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[global_group]
+
+team_enemy=""
+team_ally=""
+arena_manager=""
 
 [rendering]
 

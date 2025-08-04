@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://blk3g483w1pxu"]
+
+[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_bvaff"]
+
+[sub_resource type="Gradient" id="Gradient_k4y1u"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_btf8p"]
+gradient = SubResource("Gradient_k4y1u")
+fill_from = Vector2(1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
+radius = 78.1601
+
+[node name="Unit_enemy" type="Node2D" groups=["team_enemy"]]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_bvaff")
+max_health = 10.0
+speed = 0.2
+damage = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_btf8p")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ctwoc")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -61.0
+offset_right = 33.0
+offset_bottom = -34.0
+max_value = 3.0
+value = 2.0
+show_percentage = false

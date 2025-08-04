@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=9 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_3p7kb"]
+[ext_resource type="PackedScene" uid="uid://ci101ckb317ov" path="res://unit_ally.tscn" id="3_5tue2"]
+[ext_resource type="PackedScene" uid="uid://blk3g483w1pxu" path="res://unit_enemy.tscn" id="4_aj7ud"]
+[ext_resource type="PackedScene" uid="uid://cal6r1mo3nupt" path="res://arena_manager.tscn" id="5_asdgj"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -48,9 +51,9 @@ tile_set = ExtResource("1_64ph8")
 z_index = 99
 position = Vector2(320, 180)
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_v1x5q")
 texture = ExtResource("2_3p7kb")
 lifetime = 6.0
+process_material = SubResource("ParticleProcessMaterial_v1x5q")
 
 [node name="GameArea" type="TileMapLayer" parent="."]
 position = Vector2(160, 32)
@@ -76,3 +79,26 @@ metadata/_edit_group_ = true
 [node name="Highlight" type="TileMapLayer" parent="Bench"]
 position = Vector2(160, 32)
 tile_set = ExtResource("1_64ph8")
+
+[node name="arena_manager" parent="." instance=ExtResource("5_asdgj")]
+position = Vector2(326.636, 192)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Unit_enemy2" parent="Node2D" instance=ExtResource("4_aj7ud")]
+position = Vector2(450, 141)
+
+[node name="Unit_enemy4" parent="Node2D" instance=ExtResource("4_aj7ud")]
+position = Vector2(451, 186)
+
+[node name="Unit_enemy3" parent="Node2D" instance=ExtResource("4_aj7ud")]
+position = Vector2(450, 95)
+
+[node name="Unit_enemy" parent="." instance=ExtResource("3_5tue2")]
+position = Vector2(302, 145)
+
+[node name="Unit_enemy2" parent="." instance=ExtResource("3_5tue2")]
+position = Vector2(205, 113)
+
+[node name="Unit_enemy3" parent="." instance=ExtResource("3_5tue2")]
+position = Vector2(207, 178)
