@@ -23,7 +23,7 @@ var wait_before_attack
 func _ready() -> void:
 	arena_manager = get_tree().get_first_node_in_group("arena_manager")
 	cur_health = max_health
-	range = collision.shape.radius
+	range = collision.shape.radius / 4
 	wait_before_attack = max_wait_before_attack
 	set_progres_bar()
 	
