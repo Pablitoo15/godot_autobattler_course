@@ -26,9 +26,13 @@ window/stretch/scale_mode="integer"
 
 [global_group]
 
-team_enemy=""
-team_ally=""
 arena_manager=""
+team_ally_2=""
+team_ally_3=""
+team_ally_1=""
+team_enemy_1=""
+team_enemy_2=""
+team_enemy_3=""
 
 [rendering]
 

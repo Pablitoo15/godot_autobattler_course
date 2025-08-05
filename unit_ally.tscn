@@ -1,34 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci101ckb317ov"]
+[gd_scene load_steps=6 format=3 uid="uid://ci101ckb317ov"]
 
-[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_xs68s"]
+[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_bvaff"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xs68s"]
+radius = 48.0
 
 [sub_resource type="Gradient" id="Gradient_k4y1u"]
-offsets = PackedFloat32Array(0.194805, 0.987013, 0.993506, 1)
-colors = PackedColorArray(0.788235, 0.0352941, 0.117647, 1, 0, 0, 0, 1, 0.807021, 0.120873, 0.19592, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_btf8p"]
 gradient = SubResource("Gradient_k4y1u")
 fill_from = Vector2(1, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
-radius = 78.1601
+radius = 128.06
 
-[node name="Unit_enemy" type="Node2D" groups=["team_ally"]]
-scale = Vector2(0.25, 0.25)
-script = ExtResource("1_xs68s")
+[node name="unit_ally" type="CharacterBody2D"]
+script = ExtResource("1_bvaff")
 max_health = 10.0
-speed = 0.2
+speed = 10.0
 damage = 3.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("CircleShape2D_xs68s")
+
+[node name="2d" type="Node2D" parent="."]
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="2d"]
 texture = SubResource("GradientTexture2D_btf8p")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="2d"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2d/Area2D"]
 shape = SubResource("CircleShape2D_ctwoc")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="2d"]
 offset_left = -32.0
 offset_top = -61.0
 offset_right = 33.0

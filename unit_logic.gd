@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @export var max_health: float
 @export var speed: float
@@ -6,9 +6,8 @@ extends Node2D
 @export var team: int
 
 
-@onready var progres_bar = $ProgressBar
-@onready var collision = $Area2D/CollisionShape2D
-
+@onready var progres_bar = $"2d/ProgressBar"
+@onready var collision =$"2d/Area2D/CollisionShape2D"
 enum State {walk_to_target, attack_target, only_move, idle}
 var cur_state = State.idle
 var cur_health: float
@@ -21,7 +20,8 @@ var wait_before_attack
 
 
 func _ready() -> void:
-	arena_manager = get_tree().get_first_node_in_group("arena_manager")
+	arena_manager = get_parent()
+	print(arena_manager.name)
 	cur_health = max_health
 	range = collision.shape.radius / 4
 	wait_before_attack = max_wait_before_attack
@@ -44,12 +44,12 @@ func _process(delta: float) -> void:
 func evalute_state():
 	if check_if_range():
 		cur_state = State.attack_target
+		return
 		
-	elif cur_target == null:
-		cur_target = arena_manager.get_closest_enemy(self)
-		cur_state = State.walk_to_target
+	cur_target = arena_manager.get_closest_enemy(self)
+	cur_state = State.walk_to_target
 		
-	elif cur_target == null:
+	if cur_target == null:
 		cur_state = State.idle
 
 func check_if_range():
@@ -82,7 +82,8 @@ func apply_damage(get_damaged: float):
 func move_to():
 	var dir_to_target = (cur_target.global_position - global_position).normalized()
 	var move_value = dir_to_target * speed
-	global_position += move_value
+	velocity = move_value
+	move_and_slide()
 
 func update_progres_bar():
 	progres_bar.value = cur_health

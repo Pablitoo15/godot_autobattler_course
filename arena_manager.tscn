@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cal6r1mo3nupt"]
+[gd_scene load_steps=4 format=3 uid="uid://cal6r1mo3nupt"]
 
 [ext_resource type="Script" uid="uid://sgbsbsnx6e1e" path="res://arena_manager.gd" id="1_ax0uj"]
 
+[sub_resource type="Gradient" id="Gradient_ax0uj"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ralu3"]
+gradient = SubResource("Gradient_ax0uj")
+fill_from = Vector2(1, 0)
+
 [node name="arena_manager" type="Node2D" groups=["arena_manager"]]
 script = ExtResource("1_ax0uj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.97999, 0)
+scale = Vector2(1.93812, 1)
+texture = SubResource("GradientTexture2D_ralu3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 51.0
+offset_bottom = 24.0
+text = "arena
+manager"
