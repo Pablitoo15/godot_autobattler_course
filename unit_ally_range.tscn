@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://daf1ydiyvwck1"]
+
+[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_0uo4o"]
+[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="2_0uo4o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0uo4o"]
+radius = 20.0
+height = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
+radius = 448.071
+
+[node name="unit_ally" type="CharacterBody2D"]
+script = ExtResource("1_0uo4o")
+max_health = 3.0
+speed = 12.0
+damage = 6.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("CapsuleShape2D_0uo4o")
+
+[node name="2d" type="Node2D" parent="."]
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="2d"]
+position = Vector2(-20, -4)
+scale = Vector2(4, 4)
+texture = ExtResource("2_0uo4o")
+region_enabled = true
+region_rect = Rect2(67.1312, 67.0873, 25.8997, 27.9154)
+
+[node name="Area2D" type="Area2D" parent="2d"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2d/Area2D"]
+shape = SubResource("CircleShape2D_ctwoc")
+
+[node name="ProgressBar" type="ProgressBar" parent="2d"]
+offset_left = -32.0
+offset_top = -88.0
+offset_right = 33.0
+offset_bottom = -61.0
+max_value = 3.0
+value = 2.0
+show_percentage = false

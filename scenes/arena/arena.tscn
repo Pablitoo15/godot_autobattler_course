@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=11 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_3p7kb"]
 [ext_resource type="PackedScene" uid="uid://blk3g483w1pxu" path="res://unit_enemy.tscn" id="4_aj7ud"]
 [ext_resource type="PackedScene" uid="uid://cal6r1mo3nupt" path="res://arena_manager.tscn" id="5_asdgj"]
 [ext_resource type="PackedScene" uid="uid://ci101ckb317ov" path="res://unit_ally.tscn" id="5_jx0ua"]
+[ext_resource type="PackedScene" uid="uid://ciyv0px12i4ec" path="res://unit_ally_mini.tscn" id="6_jx0ua"]
+[ext_resource type="PackedScene" uid="uid://daf1ydiyvwck1" path="res://unit_ally_range.tscn" id="6_u52cf"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -90,11 +92,23 @@ team_ally_tag = "team_ally_1"
 [node name="Unit_enemy" parent="arena_manager" groups=["team_enemy_1"] instance=ExtResource("4_aj7ud")]
 position = Vector2(1, 74)
 
-[node name="Unit_ally" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("5_jx0ua")]
-position = Vector2(-2, 370)
+[node name="unit_ally" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
+position = Vector2(-9, 387)
 
-[node name="Unit_ally2" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("5_jx0ua")]
-position = Vector2(57, 372)
+[node name="unit_ally2" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
+position = Vector2(-34, 387)
+
+[node name="unit_ally3" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
+position = Vector2(-35, 362)
+
+[node name="unit_ally4" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
+position = Vector2(-9, 362)
+
+[node name="unit_ally7" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
+position = Vector2(18, 361)
+
+[node name="unit_ally8" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
+position = Vector2(19, 385)
 
 [node name="arena_manager2" parent="." instance=ExtResource("5_asdgj")]
 position = Vector2(317, -45)
@@ -108,19 +122,13 @@ position = Vector2(5, 78)
 position = Vector2(5, 199)
 
 [node name="Unit_enemy2" parent="arena_manager2" groups=["team_enemy_2"] instance=ExtResource("4_aj7ud")]
-position = Vector2(4, -39)
+position = Vector2(2, -63)
 
 [node name="Unit_enemy3" parent="arena_manager2" groups=["team_enemy_2"] instance=ExtResource("4_aj7ud")]
-position = Vector2(4, -128)
+position = Vector2(3, -175)
 
-[node name="Unit_ally" parent="arena_manager2" groups=["team_ally_2"] instance=ExtResource("5_jx0ua")]
-position = Vector2(-55, 348)
-
-[node name="Unit_ally2" parent="arena_manager2" groups=["team_ally_2"] instance=ExtResource("5_jx0ua")]
-position = Vector2(1, 390)
-
-[node name="Unit_ally3" parent="arena_manager2" groups=["team_ally_2"] instance=ExtResource("5_jx0ua")]
-position = Vector2(59, 343)
+[node name="unit_ally" parent="arena_manager2" groups=["team_ally_2"] instance=ExtResource("6_u52cf")]
+position = Vector2(-3, 386)
 
 [node name="arena_manager3" parent="." instance=ExtResource("5_asdgj")]
 position = Vector2(534, -50)
@@ -132,6 +140,9 @@ position = Vector2(21, 82)
 
 [node name="Unit_ally" parent="arena_manager3" groups=["team_ally_3"] instance=ExtResource("5_jx0ua")]
 position = Vector2(16, 382)
+
+[node name="Unit_ally2" parent="arena_manager3" groups=["team_ally_3"] instance=ExtResource("5_jx0ua")]
+position = Vector2(-48, 382)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(325, 240)

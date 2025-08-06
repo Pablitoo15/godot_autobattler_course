@@ -1,24 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci101ckb317ov"]
+[gd_scene load_steps=5 format=3 uid="uid://ciyv0px12i4ec"]
 
-[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_bvaff"]
+[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_lg2ms"]
+[ext_resource type="Texture2D" uid="uid://ct4xk88g67xlv" path="res://assets/sprites/monsters.png" id="2_f2ykp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xs68s"]
-radius = 48.0
-
-[sub_resource type="Gradient" id="Gradient_k4y1u"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_btf8p"]
-gradient = SubResource("Gradient_k4y1u")
-fill_from = Vector2(1, 0)
+radius = 24.3311
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
-radius = 128.06
+radius = 80.0999
 
 [node name="unit_ally" type="CharacterBody2D"]
-script = ExtResource("1_bvaff")
-max_health = 10.0
-speed = 20.0
-damage = 3.0
+script = ExtResource("1_lg2ms")
+max_health = 2.0
+speed = 40.0
+damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -28,7 +23,11 @@ shape = SubResource("CircleShape2D_xs68s")
 scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="2d"]
-texture = SubResource("GradientTexture2D_btf8p")
+position = Vector2(0, -4)
+scale = Vector2(2, 3.5)
+texture = ExtResource("2_f2ykp")
+region_enabled = true
+region_rect = Rect2(67.285, 12.8965, 22.0531, 16.9639)
 
 [node name="Area2D" type="Area2D" parent="2d"]
 
