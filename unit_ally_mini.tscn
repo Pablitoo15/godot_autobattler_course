@@ -9,7 +9,7 @@ radius = 24.3311
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 80.0999
 
-[node name="unit_ally" type="CharacterBody2D"]
+[node name="unit_ally" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_lg2ms")
 max_health = 2.0
 speed = 40.0

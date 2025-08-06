@@ -10,10 +10,10 @@ height = 80.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 448.071
 
-[node name="unit_ally" type="CharacterBody2D"]
+[node name="unit_ally" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_0uo4o")
 max_health = 3.0
-speed = 12.0
+speed = 24.0
 damage = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

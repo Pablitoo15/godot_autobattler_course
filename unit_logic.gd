@@ -46,18 +46,22 @@ func _process(delta: float) -> void:
 	
 func evalute_state():
 	if cur_move_to != Vector2(0, 0):
-		if cur_state != State.only_move:
+		if global_position.distance_to(cur_move_to) < 10:
+			cur_move_to = Vector2.ZERO
+			
+		elif cur_state != State.only_move:
 			cur_state = State.only_move
 			return
-	if check_if_range():
+	elif check_if_range():
 		cur_state = State.attack_target
 		return
 		
-	cur_target = arena_manager.get_closest_enemy(self)
-	cur_state = State.walk_to_target
+	else:
+		cur_target = arena_manager.get_closest_enemy(self)
+		cur_state = State.walk_to_target
 		
-	if cur_target == null:
-		cur_state = State.idle
+		if cur_target == null:
+			cur_state = State.idle
 
 func check_if_range():
 	if cur_target == null:
@@ -108,3 +112,6 @@ func is_moving():
 		return true
 	else:
 		return false
+		
+func to_goal(destination: Vector2):
+	cur_move_to = destination

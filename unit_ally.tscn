@@ -14,7 +14,7 @@ fill_from = Vector2(1, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 128.06
 
-[node name="unit_ally" type="CharacterBody2D"]
+[node name="unit_ally" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_bvaff")
 max_health = 10.0
 speed = 20.0
