@@ -2,35 +2,38 @@
 
 [ext_resource type="Script" uid="uid://sgbsbsnx6e1e" path="res://arena_manager.gd" id="1_ax0uj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax0uj"]
+size = Vector2(167, 561)
+
 [sub_resource type="Gradient" id="Gradient_ax0uj"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ralu3"]
 gradient = SubResource("Gradient_ax0uj")
 fill_from = Vector2(1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax0uj"]
-size = Vector2(167, 496)
-
 [node name="arena_manager" type="Node2D" groups=["arena_manager"]]
 script = ExtResource("1_ax0uj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.5, 249.5)
+shape = SubResource("RectangleShape2D_ax0uj")
+
+[node name="Debug" type="Node2D" parent="."]
+position = Vector2(0, -65)
+
+[node name="Sprite2D" type="Sprite2D" parent="Debug"]
 position = Vector2(2.97999, 0)
 scale = Vector2(1.93812, 1)
 texture = SubResource("GradientTexture2D_ralu3")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Debug"]
 offset_left = -32.0
 offset_top = -24.0
 offset_right = 51.0
 offset_bottom = 24.0
 text = "arena
 manager"
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4.5, 282)
-shape = SubResource("RectangleShape2D_ax0uj")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

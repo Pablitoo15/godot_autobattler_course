@@ -16,7 +16,7 @@ fill_from = Vector2(1, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 128.062
 
-[node name="unit_ally" type="CharacterBody2D"]
+[node name="unit_enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_bvaff")
 max_health = 10.0
 speed = 20.0
@@ -38,6 +38,7 @@ texture = SubResource("GradientTexture2D_btf8p")
 shape = SubResource("CircleShape2D_ctwoc")
 
 [node name="ProgressBar" type="ProgressBar" parent="2d"]
+visible = false
 offset_left = -32.0
 offset_top = -61.0
 offset_right = 33.0

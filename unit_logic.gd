@@ -27,6 +27,9 @@ func _ready() -> void:
 	wait_before_attack = max_wait_before_attack
 	set_progres_bar()
 	
+	if self.is_in_group("enemy"):
+		arena_manager.add_to_list(self)
+	
 func _process(delta: float) -> void:
 	if cur_state == State.only_move:
 		move_to(cur_move_to)

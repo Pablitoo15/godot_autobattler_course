@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3luitgp2x8xs"]
+
+[ext_resource type="Script" uid="uid://da24pm2fb4alj" path="res://spawner_enemy.gd" id="1_0vfb2"]
+[ext_resource type="Texture2D" uid="uid://b1aup08or8bao" path="res://assets/sprites/traits/elf.png" id="1_vwhfw"]
+
+[node name="enemy_spawner" type="Node2D"]
+script = ExtResource("1_0vfb2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -32.0
+offset_top = -31.0
+offset_right = 68.0
+offset_bottom = 9.0
+text = "Spawner"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vwhfw")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -44,9 +44,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		body.new_parent_arena(self)
 		#var group = body.get_groups()
 		#var one_group = group[0]
-		body.remove_from_group("team_ally_1")
-		body.remove_from_group("team_ally_2")
-		body.remove_from_group("team_ally_3")
+		if body.is_in_group("enemy"):
+			print("added enemy to group")
+			body.add_to_group(team_enemy_tag)
+			team_enemy.append(body)
+		else:
+			body.remove_from_group("team_ally_1")
+			body.remove_from_group("team_ally_2")
+			body.remove_from_group("team_ally_3")
+			body.add_to_group(team_ally_tag)
+			team_ally.append(body)
 
-		body.add_to_group(team_ally_tag)
-		team_ally.append(body)
+func add_to_list(unit: CharacterBody2D):
+	unit.add_to_group(team_enemy_tag)
+	team_enemy.append(unit)
+	

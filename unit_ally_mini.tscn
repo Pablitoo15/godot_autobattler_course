@@ -35,6 +35,7 @@ region_rect = Rect2(67.285, 12.8965, 22.0531, 16.9639)
 shape = SubResource("CircleShape2D_ctwoc")
 
 [node name="ProgressBar" type="ProgressBar" parent="2d"]
+visible = false
 offset_left = -32.0
 offset_top = -61.0
 offset_right = 33.0

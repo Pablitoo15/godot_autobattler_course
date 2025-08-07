@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=14 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" uid="uid://uwahejw5oiw6" path="res://scenes/arena/arena.gd" id="1_ii07k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ciyv0px12i4ec" path="res://unit_ally_mini.tscn" id="6_jx0ua"]
 [ext_resource type="PackedScene" uid="uid://daf1ydiyvwck1" path="res://unit_ally_range.tscn" id="6_u52cf"]
 [ext_resource type="PackedScene" uid="uid://cimio5l30bg7m" path="res://area_order.tscn" id="9_6w4xk"]
+[ext_resource type="PackedScene" uid="uid://c3luitgp2x8xs" path="res://spawner_enemy.tscn" id="10_2ml6w"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -92,9 +93,6 @@ position = Vector2(98, -40)
 team_enemy_tag = "team_enemy_1"
 team_ally_tag = "team_ally_1"
 
-[node name="Unit_enemy" parent="arena_manager" groups=["team_enemy_1"] instance=ExtResource("4_aj7ud")]
-position = Vector2(1, 74)
-
 [node name="unit_ally" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
 position = Vector2(-9, 387)
 
@@ -118,18 +116,6 @@ position = Vector2(317, -45)
 team_enemy_tag = "team_enemy_2"
 team_ally_tag = "team_ally_2"
 
-[node name="Unit_enemy" parent="arena_manager2" groups=["team_enemy_2"] instance=ExtResource("4_aj7ud")]
-position = Vector2(5, 78)
-
-[node name="Unit_enemy4" parent="arena_manager2" groups=["team_enemy_2"] instance=ExtResource("4_aj7ud")]
-position = Vector2(5, 199)
-
-[node name="Unit_enemy2" parent="arena_manager2" groups=["team_enemy_2"] instance=ExtResource("4_aj7ud")]
-position = Vector2(2, -63)
-
-[node name="Unit_enemy3" parent="arena_manager2" groups=["team_enemy_2"] instance=ExtResource("4_aj7ud")]
-position = Vector2(3, -175)
-
 [node name="unit_ally" parent="arena_manager2" groups=["team_ally_2"] instance=ExtResource("6_u52cf")]
 position = Vector2(-3, 386)
 
@@ -137,9 +123,6 @@ position = Vector2(-3, 386)
 position = Vector2(534, -50)
 team_enemy_tag = "team_enemy_3"
 team_ally_tag = "team_ally_3"
-
-[node name="Unit_enemy" parent="arena_manager3" groups=["team_enemy_3"] instance=ExtResource("4_aj7ud")]
-position = Vector2(21, 82)
 
 [node name="Unit_ally" parent="arena_manager3" groups=["team_ally_3"] instance=ExtResource("5_jx0ua")]
 position = Vector2(16, 382)
@@ -153,3 +136,11 @@ zoom = Vector2(0.75, 0.75)
 
 [node name="Node2D" parent="." instance=ExtResource("9_6w4xk")]
 position = Vector2(103, 249)
+
+[node name="enemy_spawner" parent="." node_paths=PackedStringArray("parent_node") instance=ExtResource("10_2ml6w")]
+position = Vector2(98, -34)
+enemy_to_spawn = Array[PackedScene]([ExtResource("4_aj7ud")])
+enemies_to_spawn_min = 1
+enemies_to_spawn_max = 3
+wait_time_between_waves_max = 5.0
+parent_node = NodePath("../arena_manager")
