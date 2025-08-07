@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cu1t7d6f75o3q" path="res://area_order.gd" id="1_vhh5h"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vsu0c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhh5h"]
+size = Vector2(64, 64)
 
 [sub_resource type="Gradient" id="Gradient_vhh5h"]
 offsets = PackedFloat32Array(0.934509, 1)
@@ -18,7 +19,7 @@ script = ExtResource("1_vhh5h")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_vsu0c")
+shape = SubResource("RectangleShape2D_vhh5h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_n0f6c")

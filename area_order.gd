@@ -23,6 +23,7 @@ func cancle():
 		
 func get_objects():
 	objects_to_move = objects.duplicate()
+	print(objects_to_move.size())
 
 func make_order():
 	movement_goal = get_global_mouse_position()

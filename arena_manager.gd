@@ -42,8 +42,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("new_parent_arena") and body.is_moving():
 		print("sthsth")
 		body.new_parent_arena(self)
-		var group = body.get_groups()
-		var one_group = group[0]
-		body.remove_from_group(one_group)
+		#var group = body.get_groups()
+		#var one_group = group[0]
+		body.remove_from_group("team_ally_1")
+		body.remove_from_group("team_ally_2")
+		body.remove_from_group("team_ally_3")
+
 		body.add_to_group(team_ally_tag)
 		team_ally.append(body)
