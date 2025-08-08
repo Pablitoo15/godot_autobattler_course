@@ -30,15 +30,18 @@ func _ready() -> void:
 	arena_manager.add_to_list(self)
 	
 func _process(delta: float) -> void:
-	evalute_state()
-	if cur_state == State.idle:
-		return
+	#if cur_state == State.idle:
+		#return
 	if cur_state == State.only_move:
-		move_to(cur_move_to, delta)
+		move_to(cur_move_to, delta,cur_state)
+
+
 	
-	if cur_state == State.walk_to_target:
+	elif cur_state == State.walk_to_target:
 		if cur_target != null:
-			move_to(cur_target.global_position, delta)
+			move_to(cur_target.global_position, delta,cur_state)
+
+
 		else:
 			pass
 			
@@ -47,18 +50,17 @@ func _process(delta: float) -> void:
 	
 	elif cur_state == State.idle:
 		pass
-	
+	evalute_state()
+
 func evalute_state():
+	if global_position.distance_to(cur_move_to) < 10:
+		cur_move_to = Vector2.ZERO
 	
 	if cur_move_to != Vector2(0, 0):
-		if global_position.distance_to(cur_move_to) < 10:
-			cur_move_to = Vector2.ZERO
-			
-		elif cur_state != State.only_move:
 			cur_state = State.only_move
 			return
 
-	if self.is_in_group("resting"):
+	elif self.is_in_group("resting"):
 		cur_state = State.idle
 		return
 			
@@ -68,7 +70,9 @@ func evalute_state():
 		
 	else:
 		cur_target = arena_manager.get_closest_enemy(self)
-		cur_state = State.walk_to_target
+		if cur_target != null:
+			cur_state = State.walk_to_target
+			return
 		
 		if cur_target == null:
 			cur_state = State.idle
@@ -85,7 +89,8 @@ func attack(delta: float):
 		wait_before_attack = max_wait_before_attack
 		try_deal_dmg()
 
-		
+
+			
 func try_deal_dmg():
 	if cur_target != null:
 		cur_target.apply_damage(damage)
@@ -97,7 +102,8 @@ func apply_damage(get_damaged: float):
 		arena_manager.unit_die(self)
 		queue_free()
 
-func move_to(goal: Vector2, delta: float):
+func move_to(goal: Vector2, delta: float, state: int):
+	print(state)
 	var dir_to_target = (goal - global_position).normalized()
 	var move_value = dir_to_target * speed
 	velocity = move_value

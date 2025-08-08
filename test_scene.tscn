@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://baweoqo0bexah"]
+
+[ext_resource type="PackedScene" uid="uid://cimio5l30bg7m" path="res://area_order.tscn" id="1_sasra"]
+[ext_resource type="PackedScene" uid="uid://cal6r1mo3nupt" path="res://arena_manager.tscn" id="2_coq8p"]
+[ext_resource type="PackedScene" uid="uid://ciyv0px12i4ec" path="res://unit_ally_mini.tscn" id="3_2nij2"]
+[ext_resource type="PackedScene" uid="uid://c3ms5x7wbs4yt" path="res://unit_enemy_mini.tscn" id="4_coq8p"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_sasra")]
+
+[node name="arena_manager" parent="." instance=ExtResource("2_coq8p")]
+position = Vector2(304, 20)
+team_enemy_tag = "team_enemy_1"
+team_ally_tag = "team_ally_1"
+
+[node name="unit_ally" parent="arena_manager" instance=ExtResource("3_2nij2")]
+position = Vector2(3, 325)
+
+[node name="enemy_mini" parent="arena_manager" instance=ExtResource("4_coq8p")]
+position = Vector2(4, -8)

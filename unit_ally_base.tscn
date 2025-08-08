@@ -11,7 +11,7 @@ radius = 128.06
 
 [node name="base" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_in2i0")
-max_health = 20.0
+max_health = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)

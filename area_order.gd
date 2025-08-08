@@ -15,21 +15,20 @@ func _process(delta: float) -> void:
 			make_order()
 	if Input.is_action_just_pressed("cancle"):
 		cancle()
-	print(Engine.get_frames_per_second())
 		
 func cancle():
 	objects_to_move.clear()
 		
 func get_objects():
 	objects_to_move = objects.duplicate()
-	print(str(objects_to_move.size()) + " - how many units")
+	print("movment ready")
 
 func make_order():
 	movement_goal = get_global_mouse_position()
 	for unit in objects_to_move:
 		unit.to_goal(movement_goal)
-	print("movement order for unit was made")
-	print(objects_to_move[0].cur_state)
+		print("movment go")
+
 	objects_to_move.clear()
 
 
