@@ -9,6 +9,7 @@ extends Node2D
 
 @onready var timer_time: float
 @onready var timer = $Timer
+@onready var sprite = $RichTextLabel
 
 func _ready() -> void:
 	setup_timer()
@@ -23,8 +24,7 @@ func spawn_enemies():
 	for i in enemy_number:
 		var rnd_enemy = enemy_to_spawn.pick_random()
 		var enemy = rnd_enemy.instantiate() as CharacterBody2D
-		print(enemy.name)
-		enemy.global_position = self.global_position
+		enemy.global_position = sprite.global_position
 		parent_node.add_child(enemy)
 		
 func setup_timer():

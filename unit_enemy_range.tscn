@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://daf1ydiyvwck1"]
+[gd_scene load_steps=5 format=3 uid="uid://c5yciv0xh7ghe"]
 
-[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_0uo4o"]
-[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="2_0uo4o"]
+[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_u2bwa"]
+[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="2_ekkmu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0uo4o"]
 radius = 20.0
@@ -10,8 +10,8 @@ height = 80.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 448.071
 
-[node name="unit_ally_range" type="CharacterBody2D" groups=["unit"]]
-script = ExtResource("1_0uo4o")
+[node name="enemy_range" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_u2bwa")
 max_health = 3.0
 speed = 40.0
 damage = 6.0
@@ -25,9 +25,10 @@ shape = SubResource("CapsuleShape2D_0uo4o")
 scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="2d"]
+self_modulate = Color(0.976471, 0, 0, 1)
 position = Vector2(-20, -4)
 scale = Vector2(4, 4)
-texture = ExtResource("2_0uo4o")
+texture = ExtResource("2_ekkmu")
 region_enabled = true
 region_rect = Rect2(67.1312, 67.0873, 25.8997, 27.9154)
 

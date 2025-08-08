@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://spuiknbcpju2"]
+
+[ext_resource type="Script" uid="uid://ygnc6ojf8keq" path="res://rest_bench.gd" id="1_3camg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76283"]
+
+[node name="rest_bench" type="Node2D"]
+script = ExtResource("1_3camg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_76283")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

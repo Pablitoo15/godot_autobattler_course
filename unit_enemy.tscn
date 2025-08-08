@@ -19,7 +19,7 @@ radius = 128.062
 [node name="unit_enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_bvaff")
 max_health = 10.0
-speed = 20.0
+speed = 45.0
 damage = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

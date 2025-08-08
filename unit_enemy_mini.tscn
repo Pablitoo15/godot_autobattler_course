@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciyv0px12i4ec"]
+[gd_scene load_steps=5 format=3 uid="uid://c3ms5x7wbs4yt"]
 
-[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_lg2ms"]
-[ext_resource type="Texture2D" uid="uid://ct4xk88g67xlv" path="res://assets/sprites/monsters.png" id="2_f2ykp"]
+[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_xmxfn"]
+[ext_resource type="Texture2D" uid="uid://ct4xk88g67xlv" path="res://assets/sprites/monsters.png" id="2_u7aq1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xs68s"]
 radius = 24.3311
@@ -9,8 +9,8 @@ radius = 24.3311
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 80.0999
 
-[node name="unit_ally" type="CharacterBody2D" groups=["unit"]]
-script = ExtResource("1_lg2ms")
+[node name="enemy_mini" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_xmxfn")
 max_health = 2.0
 speed = 50.0
 damage = 1.0
@@ -23,9 +23,10 @@ shape = SubResource("CircleShape2D_xs68s")
 scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="2d"]
+self_modulate = Color(0.976471, 0, 0, 1)
 position = Vector2(0, -4)
 scale = Vector2(2, 3.5)
-texture = ExtResource("2_f2ykp")
+texture = ExtResource("2_u7aq1")
 region_enabled = true
 region_rect = Rect2(67.285, 12.8965, 22.0531, 16.9639)
 

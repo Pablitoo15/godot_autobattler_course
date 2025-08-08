@@ -40,12 +40,10 @@ func unit_die(unit: Node2D):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("new_parent_arena") and body.is_moving():
-		print("sthsth")
 		body.new_parent_arena(self)
 		#var group = body.get_groups()
 		#var one_group = group[0]
 		if body.is_in_group("enemy"):
-			print("added enemy to group")
 			body.add_to_group(team_enemy_tag)
 			team_enemy.append(body)
 		else:
@@ -56,6 +54,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			team_ally.append(body)
 
 func add_to_list(unit: CharacterBody2D):
-	unit.add_to_group(team_enemy_tag)
-	team_enemy.append(unit)
-	
+	if unit.is_in_group("enemy"):
+		unit.add_to_group(team_enemy_tag)
+		team_enemy.append(unit)
+	else:
+		unit.add_to_group(team_ally_tag)
+		team_ally.append(unit)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("unit"):
+		unit_die(body)
+		body.remove_from_group("team_ally_1")
+		body.remove_from_group("team_ally_2")
+		body.remove_from_group("team_ally_3")

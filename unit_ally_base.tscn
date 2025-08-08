@@ -1,19 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciyv0px12i4ec"]
+[gd_scene load_steps=5 format=3 uid="uid://ciyltpr4wsd68"]
 
-[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_lg2ms"]
-[ext_resource type="Texture2D" uid="uid://ct4xk88g67xlv" path="res://assets/sprites/monsters.png" id="2_f2ykp"]
+[ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_in2i0"]
+[ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="2_m6dx3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xs68s"]
-radius = 24.3311
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
-radius = 80.0999
+radius = 128.06
 
-[node name="unit_ally" type="CharacterBody2D" groups=["unit"]]
-script = ExtResource("1_lg2ms")
-max_health = 2.0
-speed = 50.0
-damage = 1.0
+[node name="base" type="CharacterBody2D" groups=["unit"]]
+script = ExtResource("1_in2i0")
+max_health = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -23,11 +21,8 @@ shape = SubResource("CircleShape2D_xs68s")
 scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="2d"]
-position = Vector2(0, -4)
-scale = Vector2(2, 3.5)
-texture = ExtResource("2_f2ykp")
-region_enabled = true
-region_rect = Rect2(67.285, 12.8965, 22.0531, 16.9639)
+scale = Vector2(6, 6)
+texture = ExtResource("2_m6dx3")
 
 [node name="Area2D" type="Area2D" parent="2d"]
 
@@ -35,7 +30,6 @@ region_rect = Rect2(67.285, 12.8965, 22.0531, 16.9639)
 shape = SubResource("CircleShape2D_ctwoc")
 
 [node name="ProgressBar" type="ProgressBar" parent="2d"]
-visible = false
 offset_left = -32.0
 offset_top = -61.0
 offset_right = 33.0

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://sgbsbsnx6e1e" path="res://arena_manager.gd" id="1_ax0uj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ax0uj"]
-size = Vector2(167, 561)
+size = Vector2(167, 437)
 
 [sub_resource type="Gradient" id="Gradient_ax0uj"]
 
@@ -17,7 +17,7 @@ script = ExtResource("1_ax0uj")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4.5, 249.5)
+position = Vector2(4.5, 187.5)
 shape = SubResource("RectangleShape2D_ax0uj")
 
 [node name="Debug" type="Node2D" parent="."]
@@ -37,3 +37,4 @@ text = "arena
 manager"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

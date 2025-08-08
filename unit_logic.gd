@@ -27,16 +27,18 @@ func _ready() -> void:
 	wait_before_attack = max_wait_before_attack
 	set_progres_bar()
 	
-	if self.is_in_group("enemy"):
-		arena_manager.add_to_list(self)
+	arena_manager.add_to_list(self)
 	
 func _process(delta: float) -> void:
+	evalute_state()
+	if cur_state == State.idle:
+		return
 	if cur_state == State.only_move:
-		move_to(cur_move_to)
+		move_to(cur_move_to, delta)
 	
 	if cur_state == State.walk_to_target:
 		if cur_target != null:
-			move_to(cur_target.global_position)
+			move_to(cur_target.global_position, delta)
 		else:
 			pass
 			
@@ -45,9 +47,9 @@ func _process(delta: float) -> void:
 	
 	elif cur_state == State.idle:
 		pass
-	evalute_state()
 	
 func evalute_state():
+	
 	if cur_move_to != Vector2(0, 0):
 		if global_position.distance_to(cur_move_to) < 10:
 			cur_move_to = Vector2.ZERO
@@ -55,6 +57,11 @@ func evalute_state():
 		elif cur_state != State.only_move:
 			cur_state = State.only_move
 			return
+
+	if self.is_in_group("resting"):
+		cur_state = State.idle
+		return
+			
 	elif check_if_range():
 		cur_state = State.attack_target
 		return
@@ -90,12 +97,12 @@ func apply_damage(get_damaged: float):
 		arena_manager.unit_die(self)
 		queue_free()
 
-func move_to(goal: Vector2):
+func move_to(goal: Vector2, delta: float):
 	var dir_to_target = (goal - global_position).normalized()
 	var move_value = dir_to_target * speed
 	velocity = move_value
 	move_and_slide()
-
+	
 func update_progres_bar():
 	progres_bar.value = cur_health
 	if progres_bar.visible == false:
