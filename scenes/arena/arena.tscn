@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
-[ext_resource type="Script" uid="uid://uwahejw5oiw6" path="res://scenes/arena/arena.gd" id="1_ii07k"]
+[ext_resource type="Script" uid="uid://dffldjblpw50h" path="res://scenes/arena/end_game.gd" id="1_fv88w"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_3p7kb"]
 [ext_resource type="PackedScene" uid="uid://blk3g483w1pxu" path="res://unit_enemy.tscn" id="4_aj7ud"]
 [ext_resource type="PackedScene" uid="uid://cal6r1mo3nupt" path="res://arena_manager.tscn" id="5_asdgj"]
@@ -37,8 +37,10 @@ scale_max = 0.2
 scale_curve = SubResource("CurveTexture_5sum6")
 color = Color(1, 1, 1, 0.494118)
 
-[node name="Arena" type="Node2D"]
-script = ExtResource("1_ii07k")
+[node name="Arena" type="Node2D" node_paths=PackedStringArray("units_to_defend", "canvas")]
+script = ExtResource("1_fv88w")
+units_to_defend = [NodePath("arena_manager/base"), NodePath("arena_manager2/base"), NodePath("arena_manager3/base")]
+canvas = NodePath("CanvasModulate")
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -170,9 +172,13 @@ position = Vector2(6, 341)
 position = Vector2(325, 240)
 zoom = Vector2(0.75, 0.75)
 
-[node name="Node2D" parent="." instance=ExtResource("9_6w4xk")]
+[node name="area_order" parent="." instance=ExtResource("9_6w4xk")]
 position = Vector2(103, 249)
 
 [node name="rest_bench" parent="." instance=ExtResource("13_s83md")]
 position = Vector2(320, 437)
 scale = Vector2(32.16, 4.32)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.446777, 0.446777, 0.446777, 1)

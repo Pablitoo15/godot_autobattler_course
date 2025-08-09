@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cimio5l30bg7m"]
+[gd_scene load_steps=6 format=3 uid="uid://cimio5l30bg7m"]
 
 [ext_resource type="Script" uid="uid://cu1t7d6f75o3q" path="res://area_order.gd" id="1_vhh5h"]
+[ext_resource type="PackedScene" uid="uid://btf5s6p0yk7dy" path="res://move_marker.tscn" id="2_n0f6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhh5h"]
 size = Vector2(64, 64)
@@ -15,6 +16,7 @@ fill_from = Vector2(0.0769231, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_vhh5h")
+move_marker = ExtResource("2_n0f6c")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://btf5s6p0yk7dy"]
+
+[ext_resource type="Script" uid="uid://34j2bq0mqdy" path="res://move_marker.gd" id="1_4dmvo"]
+[ext_resource type="Texture2D" uid="uid://cwyjrs1ogc240" path="res://assets/sprites/xp.png" id="1_vmx1v"]
+
+[node name="move_marker" type="Node2D"]
+script = ExtResource("1_4dmvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.79665
+texture = ExtResource("1_vmx1v")
