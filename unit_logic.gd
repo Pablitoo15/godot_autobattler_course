@@ -103,7 +103,6 @@ func apply_damage(get_damaged: float):
 		queue_free()
 
 func move_to(goal: Vector2, delta: float, state: int):
-	print(state)
 	var dir_to_target = (goal - global_position).normalized()
 	var move_value = dir_to_target * speed
 	velocity = move_value
