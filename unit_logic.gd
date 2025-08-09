@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var outline_shader: ShaderMaterial = preload("res://assets/shaders/2d_outline_shader.tres")
 @export var max_health: float
 @export var speed: float
 @export var damage: float
@@ -8,6 +9,7 @@ extends CharacterBody2D
 
 @onready var progres_bar = $"2d/ProgressBar"
 @onready var collision =$"2d/Area2D/CollisionShape2D"
+@onready var sprite = $"2d/Sprite2D"
 enum State {walk_to_target, attack_target, only_move, idle}
 var cur_state = State.idle
 var cur_health: float
@@ -130,3 +132,9 @@ func is_moving():
 		
 func to_goal(destination: Vector2):
 	cur_move_to = destination
+
+func turn_on_shader(is_true: bool):
+	if is_true:
+		sprite.material = outline_shader
+	else:
+		sprite.material = null

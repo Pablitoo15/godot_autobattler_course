@@ -20,13 +20,21 @@ func _process(delta: float) -> void:
 		cancle()
 		
 func cancle():
+	for pair in objects_to_move:
+		var unit = pair["unit"]
+		var offset = pair["offset"]
+		
+		if unit.has_method("turn_on_shader") and unit:
+			unit.turn_on_shader(false)
+	
 	objects_to_move.clear()
 		
 func get_objects(click_pos: Vector2):
 	for unit in objects:
 		var offset = unit.global_position - click_pos
 		objects_to_move.append({"unit": unit, "offset": offset})
-		
+		if unit.has_method("turn_on_shader"):
+			unit.turn_on_shader(true)
 		
 
 func make_order(click_pos: Vector2):
@@ -36,10 +44,10 @@ func make_order(click_pos: Vector2):
 		var offset = pair["offset"]
 		
 		if unit:
-			
 			var desitination = click_pos + offset
 			if unit.has_method("to_goal"):
 				unit.to_goal(desitination)
+				unit.turn_on_shader(false)
 		i = i + 1
 
 	var created_marker: Node2D = move_marker.instantiate()
