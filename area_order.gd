@@ -5,6 +5,7 @@ var objects_to_move = []
 var offset_from_center_list: Array[Vector2]
 var movement_goal
 @export var move_marker: PackedScene
+@export var order_resource: Node2D
 
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
@@ -54,6 +55,7 @@ func make_order(click_pos: Vector2):
 	created_marker.global_position = click_pos
 	get_parent().add_child(created_marker)
 	objects_to_move.clear()
+	order_resource.order_made()
 	
 
 

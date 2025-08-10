@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0jifxyqd4eas" path="res://ally_spawner.gd" id="1_ktp4m"]
 [ext_resource type="PackedScene" uid="uid://daf1ydiyvwck1" path="res://unit_ally_range.tscn" id="2_4uwgw"]
-[ext_resource type="Texture2D" uid="uid://b1aup08or8bao" path="res://assets/sprites/traits/elf.png" id="2_a6q01"]
+[ext_resource type="Texture2D" uid="uid://wxshjtwjoc31" path="res://assets/sprites/traits/human.png" id="3_a6q01"]
 
 [node name="ally_spawner" type="Node2D" node_paths=PackedStringArray("icon")]
 position = Vector2(220, 105)
@@ -18,7 +18,7 @@ offset_right = 17.0
 offset_bottom = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_a6q01")
+texture = ExtResource("3_a6q01")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
@@ -29,6 +29,7 @@ offset_top = -29.0
 offset_right = 39.0
 offset_bottom = -2.0
 scale = Vector2(0.622584, 0.622584)
+max_value = 1.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

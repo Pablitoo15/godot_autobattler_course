@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqiyfwrsw48ms"]
+
+[ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="1_1vbem"]
+[ext_resource type="Script" uid="uid://cipehd0l24lho" path="res://order_resources.gd" id="1_wdtqc"]
+
+[node name="order_resources" type="Node2D" node_paths=PackedStringArray("resource_sprite")]
+script = ExtResource("1_wdtqc")
+resource_sprite = [NodePath("StarParticle"), NodePath("StarParticle2"), NodePath("StarParticle3")]
+
+[node name="StarParticle" type="Sprite2D" parent="."]
+position = Vector2(693, 50)
+scale = Vector2(4.27387, 4.27387)
+texture = ExtResource("1_1vbem")
+
+[node name="StarParticle2" type="Sprite2D" parent="."]
+position = Vector2(694, 124)
+scale = Vector2(4.27387, 4.27387)
+texture = ExtResource("1_1vbem")
+
+[node name="StarParticle3" type="Sprite2D" parent="."]
+position = Vector2(693, 201)
+scale = Vector2(4.27387, 4.27387)
+texture = ExtResource("1_1vbem")
+
+[node name="resource_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="resource_timer" to="." method="_on_resource_timer_timeout"]

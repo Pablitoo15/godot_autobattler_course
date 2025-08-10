@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=20 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" uid="uid://dffldjblpw50h" path="res://scenes/arena/end_game.gd" id="1_fv88w"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://c3ms5x7wbs4yt" path="res://unit_enemy_mini.tscn" id="11_vmsrg"]
 [ext_resource type="PackedScene" uid="uid://c5yciv0xh7ghe" path="res://unit_enemy_range.tscn" id="12_s83md"]
 [ext_resource type="PackedScene" uid="uid://spuiknbcpju2" path="res://rest_bench.tscn" id="13_s83md"]
+[ext_resource type="PackedScene" uid="uid://c7w2qp754nkpv" path="res://ally_spawner.tscn" id="15_w4nra"]
+[ext_resource type="PackedScene" uid="uid://dqiyfwrsw48ms" path="res://order_resources.tscn" id="16_t3vx8"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -135,7 +137,7 @@ parent_node = NodePath("..")
 position = Vector2(-1, 327)
 
 [node name="arena_manager2" parent="." instance=ExtResource("5_asdgj")]
-position = Vector2(317, -45)
+position = Vector2(317, -24)
 team_enemy_tag = "team_enemy_2"
 team_ally_tag = "team_ally_2"
 
@@ -155,7 +157,7 @@ wait_time_between_waves_max = 14.0
 parent_node = NodePath("..")
 
 [node name="arena_manager3" parent="." instance=ExtResource("5_asdgj")]
-position = Vector2(534, -50)
+position = Vector2(538, -24)
 team_enemy_tag = "team_enemy_3"
 team_ally_tag = "team_ally_3"
 
@@ -172,8 +174,9 @@ position = Vector2(6, 341)
 position = Vector2(325, 240)
 zoom = Vector2(0.75, 0.75)
 
-[node name="area_order" parent="." instance=ExtResource("9_6w4xk")]
+[node name="area_order" parent="." node_paths=PackedStringArray("order_resource") instance=ExtResource("9_6w4xk")]
 position = Vector2(103, 249)
+order_resource = NodePath("../order_resources")
 
 [node name="rest_bench" parent="." instance=ExtResource("13_s83md")]
 position = Vector2(320, 437)
@@ -182,3 +185,11 @@ scale = Vector2(32.16, 4.32)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[node name="ally_spawner" parent="." node_paths=PackedStringArray("where_to_spawn") instance=ExtResource("15_w4nra")]
+position = Vector2(101, 430)
+where_to_spawn = NodePath("../arena_manager")
+
+[node name="order_resources" parent="." instance=ExtResource("16_t3vx8")]
+max_resource = 3
+time_to_reset_resource = 2.0
