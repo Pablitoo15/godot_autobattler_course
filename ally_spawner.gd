@@ -9,10 +9,11 @@ extends Node2D
 @onready var progres_bar: ProgressBar = $ProgressBar
 
 var outline_shader = preload("res://assets/shaders/2d_outline_shader.tres")
+var order_resource
 
 func _ready() -> void:
 	timer.wait_time = time_to_spawn
-	print(timer.wait_time)
+	order_resource = get_tree().get_first_node_in_group("order_resource")
 
 func spawn_unit():
 	var spawned_unit: CharacterBody2D = unit.instantiate()
@@ -33,9 +34,12 @@ func _process(delta: float) -> void:
 		progres_bar.visible = false
 
 func _on_timer_timeout() -> void:
-	print("done!")
 	spawn_unit()
 
 
 func _on_button_pressed() -> void:
-	on_clicked()
+	if timer.is_stopped():
+		on_clicked()
+		if order_resource:
+			if order_resource.can_make_order():
+				order_resource.order_made()

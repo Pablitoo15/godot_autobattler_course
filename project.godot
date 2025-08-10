@@ -36,6 +36,7 @@ team_enemy_3=""
 unit=""
 enemy=""
 resting=""
+order_resource=""
 
 [input]
 

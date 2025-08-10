@@ -192,4 +192,4 @@ where_to_spawn = NodePath("../arena_manager")
 
 [node name="order_resources" parent="." instance=ExtResource("16_t3vx8")]
 max_resource = 3
-time_to_reset_resource = 2.0
+time_to_reset_resource = 6.0

@@ -24,10 +24,11 @@ func get_closest_enemy(unit: Node2D):
 		team_to_find = team_ally
 	
 	for possible_target in team_to_find:
-		var dist = unit.global_position.distance_to(possible_target.global_position)
-		if dist < closes_yet:
-			closes_yet = dist
-			closest = possible_target
+		if possible_target:
+			var dist = unit.global_position.distance_to(possible_target.global_position)
+			if dist < closes_yet:
+				closes_yet = dist
+				closest = possible_target
 	
 	return closest
 

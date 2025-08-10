@@ -10,7 +10,8 @@ var movement_goal
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
 
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") and order_resource.can_make_order():
+		
 		var where_clicked = get_global_mouse_position()
 
 		if objects_to_move.size() == 0:
