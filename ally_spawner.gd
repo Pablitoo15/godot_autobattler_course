@@ -1,12 +1,14 @@
 extends Node2D
 
-@export var icon: Sprite2D
+@export var icon: Texture2D
 @export var unit: PackedScene
+@export var how_many_units: int
 @export var time_to_spawn: int
 @export var where_to_spawn: Node2D
 
 @onready var timer: Timer = $Timer
 @onready var progres_bar: ProgressBar = $ProgressBar
+@onready var sprite = $Sprite2D
 
 var outline_shader = preload("res://assets/shaders/2d_outline_shader.tres")
 var order_resource
@@ -14,11 +16,14 @@ var order_resource
 func _ready() -> void:
 	timer.wait_time = time_to_spawn
 	order_resource = get_tree().get_first_node_in_group("order_resource")
+	sprite.texture = icon
+	
 
 func spawn_unit():
-	var spawned_unit: CharacterBody2D = unit.instantiate()
-	spawned_unit.global_position = global_position
-	where_to_spawn.add_child(spawned_unit)
+	for i in how_many_units:
+		var spawned_unit: CharacterBody2D = unit.instantiate()
+		spawned_unit.global_position = global_position + i * Vector2(10, 0)
+		where_to_spawn.add_child(spawned_unit)
 
 func on_clicked():
 	timer.start()

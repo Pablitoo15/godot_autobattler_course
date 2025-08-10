@@ -24,8 +24,8 @@ func spawn_enemies():
 	for i in enemy_number:
 		var rnd_enemy = enemy_to_spawn.pick_random()
 		var enemy = rnd_enemy.instantiate() as CharacterBody2D
-		enemy.global_position = sprite.global_position
 		parent_node.add_child(enemy)
+		enemy.global_position = sprite.global_position + i * Vector2(10, 0)
 		
 func setup_timer():
 	timer_time = randf_range(wait_time_between_waves_min, wait_time_between_waves_max)
