@@ -129,7 +129,7 @@ position = Vector2(18, 361)
 position = Vector2(19, 385)
 
 [node name="enemy_spawner" parent="arena_manager" node_paths=PackedStringArray("parent_node") instance=ExtResource("10_2ml6w")]
-position = Vector2(17, 236)
+position = Vector2(1, 63)
 enemy_to_spawn = Array[PackedScene]([ExtResource("4_aj7ud"), ExtResource("11_vmsrg"), ExtResource("12_s83md")])
 enemies_to_spawn_min = 1
 enemies_to_spawn_max = 2
@@ -152,7 +152,16 @@ position = Vector2(-3, 386)
 position = Vector2(-1, 343)
 
 [node name="enemy_spawner2" parent="arena_manager2" node_paths=PackedStringArray("parent_node") instance=ExtResource("10_2ml6w")]
-position = Vector2(8, 60)
+position = Vector2(5, 61)
+enemy_to_spawn = Array[PackedScene]([ExtResource("4_aj7ud"), ExtResource("11_vmsrg"), ExtResource("12_s83md")])
+enemies_to_spawn_min = 1
+enemies_to_spawn_max = 3
+wait_time_between_waves_min = 12.0
+wait_time_between_waves_max = 14.0
+parent_node = NodePath("..")
+
+[node name="enemy_spawner3" parent="arena_manager2" node_paths=PackedStringArray("parent_node") instance=ExtResource("10_2ml6w")]
+position = Vector2(231, 62)
 enemy_to_spawn = Array[PackedScene]([ExtResource("4_aj7ud"), ExtResource("11_vmsrg"), ExtResource("12_s83md")])
 enemies_to_spawn_min = 1
 enemies_to_spawn_max = 3

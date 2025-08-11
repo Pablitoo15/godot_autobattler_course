@@ -18,7 +18,7 @@ func get_closest_enemy(unit: Node2D):
 	var closes_yet:= INF
 	var team_to_find
 	
-	if unit.is_in_group(team_ally_tag):
+	if unit.is_in_group("unit"):
 		team_to_find = team_enemy
 	else:
 		team_to_find = team_ally
@@ -53,6 +53,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.remove_from_group("team_ally_3")
 			body.add_to_group(team_ally_tag)
 			team_ally.append(body)
+			body.remove_from_group("resting")
 
 func add_to_list(unit: CharacterBody2D):
 	if unit.is_in_group("enemy"):
@@ -69,3 +70,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		body.remove_from_group("team_ally_1")
 		body.remove_from_group("team_ally_2")
 		body.remove_from_group("team_ally_3")
+		body.add_to_group("resting")
