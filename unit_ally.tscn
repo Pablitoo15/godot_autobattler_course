@@ -16,9 +16,10 @@ radius = 128.06
 
 [node name="unit_ally" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_bvaff")
-max_health = 10.0
+max_health = 16.0
 speed = 45.0
-damage = 3.0
+damage = 2.0
+attack_interval = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)

@@ -7,6 +7,9 @@ extends Node2D
 func _ready() -> void:
 	for unit_to_defend in units_to_defend:
 		unit_to_defend.connect("tree_exited", on_tree_left)
+		
+	Engine.time_scale = 0.75
+	
 
 func on_tree_left():
 	print("end game")

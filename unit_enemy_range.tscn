@@ -11,10 +11,12 @@ height = 80.0
 radius = 448.071
 
 [node name="enemy_range" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1, 0.96763)
 script = ExtResource("1_u2bwa")
 max_health = 3.0
 speed = 40.0
-damage = 6.0
+damage = 8.0
+attack_interval = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

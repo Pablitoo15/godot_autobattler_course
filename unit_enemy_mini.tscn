@@ -13,7 +13,8 @@ radius = 80.0999
 script = ExtResource("1_xmxfn")
 max_health = 2.0
 speed = 50.0
-damage = 1.0
+damage = 0.5
+attack_interval = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)

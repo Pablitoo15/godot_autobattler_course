@@ -5,7 +5,7 @@ var outline_shader: ShaderMaterial = preload("res://assets/shaders/2d_outline_sh
 @export var speed: float
 @export var damage: float
 @export var team: int
-
+@export var attack_interval: float
 
 @onready var progres_bar = $"2d/ProgressBar"
 @onready var collision =$"2d/Area2D/CollisionShape2D"
@@ -17,7 +17,6 @@ var cur_target: Node2D
 var cur_move_to: Vector2
 var range: float
 var arena_manager
-var max_wait_before_attack: int = 1
 var wait_before_attack
 
 
@@ -26,7 +25,7 @@ func _ready() -> void:
 	arena_manager = get_parent()
 	cur_health = max_health
 	range = collision.shape.radius / 4
-	wait_before_attack = max_wait_before_attack
+	wait_before_attack = attack_interval
 	set_progres_bar()
 	
 	arena_manager.add_to_list(self)
@@ -88,7 +87,7 @@ func check_if_range():
 func attack(delta: float):
 	wait_before_attack -= delta
 	if wait_before_attack <= 0:
-		wait_before_attack = max_wait_before_attack
+		wait_before_attack = attack_interval
 		try_deal_dmg()
 
 
