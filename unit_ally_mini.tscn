@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ct4xk88g67xlv" path="res://assets/sprites/monsters.png" id="2_f2ykp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xs68s"]
-radius = 24.3311
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 80.0999
@@ -44,3 +44,7 @@ offset_bottom = -34.0
 max_value = 3.0
 value = 2.0
 show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 100.0

@@ -27,8 +27,8 @@ func spawn_enemies():
 		parent_node.add_child(enemy)
 		enemy.global_position = sprite.global_position + i * Vector2(10, 0)
 	
-	enemies_to_spawn_min += 1
-	enemies_to_spawn_max += 1
+	if enemies_to_spawn_max > 1:
+		enemies_to_spawn_max += 1
 		
 func setup_timer():
 	timer_time = randf_range(wait_time_between_waves_min, wait_time_between_waves_max)

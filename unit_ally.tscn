@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_bvaff"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xs68s"]
-radius = 48.0
+radius = 20.3961
 
 [sub_resource type="Gradient" id="Gradient_k4y1u"]
 
@@ -45,3 +45,6 @@ offset_bottom = -34.0
 max_value = 3.0
 value = 2.0
 show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true

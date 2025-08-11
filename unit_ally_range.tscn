@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="2_0uo4o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0uo4o"]
-radius = 20.0
-height = 80.0
+radius = 16.0
+height = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 448.071
@@ -46,3 +46,7 @@ offset_bottom = -61.0
 max_value = 3.0
 value = 2.0
 show_percentage = false
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 100.0
