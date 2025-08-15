@@ -9,7 +9,7 @@ radius = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 128.06
 
-[node name="base" type="CharacterBody2D" groups=["unit"]]
+[node name="base" type="CharacterBody2D" groups=["base", "unit"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_in2i0")

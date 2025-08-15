@@ -37,6 +37,7 @@ unit=""
 enemy=""
 resting=""
 order_resource=""
+base=""
 
 [input]
 

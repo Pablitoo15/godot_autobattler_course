@@ -10,11 +10,12 @@ var outline_shader: ShaderMaterial = preload("res://assets/shaders/2d_outline_sh
 @onready var progres_bar = $"2d/ProgressBar"
 @onready var collision =$"2d/Area2D/CollisionShape2D"
 @onready var sprite = $"2d/Sprite2D"
-enum State {walk_to_target, attack_target, only_move, idle}
+enum State {walk_to_target, attack_target, only_move, idle, defending_pos}
 var cur_state = State.idle
 var cur_health: float
 var cur_target: Node2D
 var cur_move_to: Vector2
+var defend_pos: Vector2
 var range: float
 var arena_manager
 var wait_before_attack
@@ -22,25 +23,28 @@ var wait_before_attack
 
 
 func _ready() -> void:
-	arena_manager = get_parent()
 	cur_health = max_health
 	range = collision.shape.radius / 4
 	wait_before_attack = attack_interval
 	set_progres_bar()
 	
-	arena_manager.add_to_list(self)
+	if self.is_in_group("enemy") or self.is_in_group("base"):
+		arena_manager = get_parent()
+		arena_manager.add_to_list(self)
 	
 func _process(delta: float) -> void:
 	#if cur_state == State.idle:
 		#return
 	if cur_state == State.only_move:
-		move_to(cur_move_to, delta,cur_state)
+		move_to(cur_move_to, delta)
 
 
+	elif cur_state == State.defending_pos:
+		move_to(defend_pos, delta)
 	
 	elif cur_state == State.walk_to_target:
 		if cur_target != null:
-			move_to(cur_target.global_position, delta,cur_state)
+			move_to(cur_target.global_position, delta)
 
 
 		else:
@@ -60,6 +64,9 @@ func evalute_state():
 	if cur_move_to != Vector2(0, 0):
 			cur_state = State.only_move
 			return
+	
+	elif defend_pos != Vector2.ZERO:
+		pass
 
 	elif self.is_in_group("resting"):
 		cur_state = State.idle
@@ -70,7 +77,9 @@ func evalute_state():
 		return
 		
 	else:
-		cur_target = arena_manager.get_closest_enemy(self)
+		if arena_manager:
+			cur_target = arena_manager.get_closest_enemy(self)
+			
 		if cur_target != null:
 			cur_state = State.walk_to_target
 			return
@@ -103,7 +112,7 @@ func apply_damage(get_damaged: float):
 		arena_manager.unit_die(self)
 		queue_free()
 
-func move_to(goal: Vector2, delta: float, state: int):
+func move_to(goal: Vector2, delta: float):
 	var dir_to_target = (goal - global_position).normalized()
 	var move_value = dir_to_target * speed
 	velocity = move_value
@@ -120,7 +129,8 @@ func set_progres_bar():
 	
 	
 func new_parent_arena(new_arena_manger: Arena_Manager):
-	arena_manager.unit_die(self)
+	if arena_manager:
+		arena_manager.unit_die(self)
 	arena_manager = new_arena_manger
 	
 func is_moving():
