@@ -71,3 +71,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		body.remove_from_group("team_ally_2")
 		body.remove_from_group("team_ally_3")
 		body.add_to_group("resting")
+		body.new_parent_arena(null)
+
+func get_array_units():
+	return team_ally

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://btsdfk3w6ejf7"]
+[gd_scene load_steps=25 format=4 uid="uid://btsdfk3w6ejf7"]
 
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="1_64ph8"]
 [ext_resource type="Script" uid="uid://dffldjblpw50h" path="res://scenes/arena/end_game.gd" id="1_fv88w"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dqiyfwrsw48ms" path="res://order_resources.tscn" id="16_t3vx8"]
 [ext_resource type="Texture2D" uid="uid://hakpdyod7nvy" path="res://assets/sprites/traits/ranger.png" id="17_8kk48"]
 [ext_resource type="Texture2D" uid="uid://b1aup08or8bao" path="res://assets/sprites/traits/elf.png" id="18_wqbss"]
+[ext_resource type="Script" uid="uid://bgroiu1wkjuba" path="res://scenes/arena/reset_node.gd" id="20_wqbss"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -41,6 +42,9 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_5sum6")
 color = Color(1, 1, 1, 0.494118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kk48"]
+size = Vector2(5, 960)
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("units_to_defend", "canvas")]
 script = ExtResource("1_fv88w")
@@ -107,12 +111,12 @@ position = Vector2(160, 32)
 tile_set = ExtResource("1_64ph8")
 
 [node name="arena_manager" parent="." instance=ExtResource("5_asdgj")]
-position = Vector2(126, -17)
+position = Vector2(120, -21)
 team_enemy_tag = "team_enemy_1"
 team_ally_tag = "team_ally_1"
 
 [node name="unit_ally" parent="arena_manager" instance=ExtResource("6_jx0ua")]
-position = Vector2(-9, 450)
+position = Vector2(-9, 453)
 
 [node name="unit_ally2" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
 position = Vector2(-34, 450)
@@ -170,14 +174,13 @@ position = Vector2(-140, 498)
 position = Vector2(-109, 500)
 
 [node name="arena_manager3" parent="." instance=ExtResource("5_asdgj")]
-position = Vector2(542, -22)
+position = Vector2(536, -26)
 scale = Vector2(1.02289, 1)
 team_enemy_tag = "team_enemy_3"
 team_ally_tag = "team_ally_3"
 
-[node name="Unit_ally2" parent="arena_manager3" groups=["team_ally_3"] instance=ExtResource("5_jx0ua")]
+[node name="Unit_ally2" parent="arena_manager3" instance=ExtResource("5_jx0ua")]
 position = Vector2(-252.227, 437)
-scale = Vector2(1.96294, 1.96294)
 
 [node name="base" parent="arena_manager3" instance=ExtResource("10_fv88w")]
 position = Vector2(88.9636, 301)
@@ -213,7 +216,7 @@ zoom = Vector2(0.7, 0.7)
 position = Vector2(103, 249)
 order_resource = NodePath("../order_resources")
 
-[node name="rest_bench" parent="." node_paths=PackedStringArray("rest_point", "battlefiled_point") instance=ExtResource("13_s83md")]
+[node name="rest_bench" parent="." node_paths=PackedStringArray("rest_point", "battlefiled_point", "button_deploy", "button_return", "arena_manager") instance=ExtResource("13_s83md")]
 modulate = Color(1, 0.286275, 1, 1)
 self_modulate = Color(1, 0.156863, 1, 1)
 top_level = true
@@ -221,6 +224,9 @@ position = Vector2(147, 448)
 scale = Vector2(18.039, 6.08697)
 rest_point = NodePath("rest")
 battlefiled_point = NodePath("battlefield")
+button_deploy = NodePath("../Deploy_1")
+button_return = NodePath("../Return_1")
+arena_manager = NodePath("../arena_manager")
 
 [node name="rest" type="Node2D" parent="rest_bench"]
 position = Vector2(-0.332612, -0.16428)
@@ -228,14 +234,22 @@ position = Vector2(-0.332612, -0.16428)
 [node name="battlefield" type="Node2D" parent="rest_bench"]
 position = Vector2(-0.166306, -22.3428)
 
-[node name="rest_bench2" parent="." instance=ExtResource("13_s83md")]
+[node name="rest_bench2" parent="." node_paths=PackedStringArray("rest_point", "battlefiled_point", "button_deploy", "button_return", "arena_manager") instance=ExtResource("13_s83md")]
 modulate = Color(1, 0.286275, 1, 1)
 self_modulate = Color(1, 0.156863, 1, 1)
 top_level = true
-position = Vector2(527, 448)
+position = Vector2(528, 448)
 scale = Vector2(18.039, 6.08697)
+rest_point = NodePath("rest")
+battlefiled_point = NodePath("battlefield")
+button_deploy = NodePath("../Deploy_2")
+button_return = NodePath("../Return_2")
+arena_manager = NodePath("../arena_manager3")
 
-[node name="Node2D" type="Node2D" parent="rest_bench2"]
+[node name="battlefield" type="Node2D" parent="rest_bench2"]
+position = Vector2(-0.166306, -22.3428)
+
+[node name="rest" type="Node2D" parent="rest_bench2"]
 position = Vector2(-0.332612, -0.16428)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -282,19 +296,27 @@ offset_right = -44.0
 offset_bottom = 497.0
 text = "Return"
 
-[node name="Button3" type="Button" parent="."]
+[node name="Deploy_2" type="Button" parent="."]
 offset_left = 717.0
-offset_top = 398.0
+offset_top = 399.0
 offset_right = 784.0
-offset_bottom = 438.0
+offset_bottom = 439.0
 text = "Deploy"
 
-[node name="Button4" type="Button" parent="."]
+[node name="Return_2" type="Button" parent="."]
 offset_left = 715.0
 offset_top = 457.0
 offset_right = 782.0
 offset_bottom = 497.0
 text = "Return"
 
-[connection signal="pressed" from="Deploy_1" to="rest_bench" method="_on_deploy_1_pressed"]
-[connection signal="button_down" from="Return_1" to="rest_bench" method="_on_return_1_button_down"]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(312, -384)
+script = ExtResource("20_wqbss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(21.5, 416)
+shape = SubResource("RectangleShape2D_8kk48")
+debug_color = Color(0.963138, 1.34766e-06, 0.500482, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

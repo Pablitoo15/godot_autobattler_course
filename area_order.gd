@@ -49,6 +49,7 @@ func make_order(click_pos: Vector2):
 			var desitination = click_pos + offset
 			if unit.has_method("to_goal"):
 				unit.to_goal(desitination)
+				unit.set_defend_post(desitination)
 				unit.turn_on_shader(false)
 		i = i + 1
 
