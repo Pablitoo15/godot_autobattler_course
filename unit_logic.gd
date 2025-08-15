@@ -35,6 +35,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#if cur_state == State.idle:
 		#return
+		
 	if cur_state == State.only_move:
 		move_to(cur_move_to, delta)
 
@@ -58,15 +59,27 @@ func _process(delta: float) -> void:
 	evalute_state()
 
 func evalute_state():
+	var defend_pos_bool:bool = defend_pos != Vector2.ZERO and not global_position.distance_to(defend_pos) < 10
 	if global_position.distance_to(cur_move_to) < 10:
 		cur_move_to = Vector2.ZERO
 	
 	if cur_move_to != Vector2(0, 0):
-			cur_state = State.only_move
-			return
+		cur_state = State.only_move
+		return
 	
-	elif defend_pos != Vector2.ZERO:
-		pass
+	elif defend_pos:
+		if arena_manager:
+			cur_target = arena_manager.get_closest_enemy(self)
+			if check_if_range():
+				cur_state = State.attack_target
+			elif cur_target:
+				cur_state = State.walk_to_target
+			else:
+				cur_state = State.defending_pos
+
+		else:
+			cur_state = State.defending_pos
+
 
 	elif self.is_in_group("resting"):
 		cur_state = State.idle
@@ -129,6 +142,7 @@ func set_progres_bar():
 	
 	
 func new_parent_arena(new_arena_manger: Arena_Manager):
+	print("new arena manager")
 	if arena_manager:
 		arena_manager.unit_die(self)
 	arena_manager = new_arena_manger
@@ -147,3 +161,10 @@ func turn_on_shader(is_true: bool):
 		sprite.material = outline_shader
 	else:
 		sprite.material = null
+
+func set_defend_post(new_defened_pos: Vector2):
+	if defend_pos != new_defened_pos:
+		print("new defend point!")
+	defend_pos =  new_defened_pos
+	
+	

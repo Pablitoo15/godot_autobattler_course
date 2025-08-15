@@ -40,7 +40,7 @@ func unit_die(unit: Node2D):
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("new_parent_arena") and body.is_moving():
+	if body.has_method("new_parent_arena"):
 		body.new_parent_arena(self)
 		#var group = body.get_groups()
 		#var one_group = group[0]

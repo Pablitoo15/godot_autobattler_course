@@ -17,5 +17,5 @@ func on_tree_left():
 
 func end_game_screen():
 	canvas.visible = true
-	await get_tree().create_timer(1).timeout
+	#await get_tree().create_timer(1).timeout
 	get_tree().paused = true
