@@ -11,6 +11,7 @@ height = 80.0
 radius = 448.071
 
 [node name="enemy_range" type="CharacterBody2D" groups=["enemy"]]
+process_mode = 4
 scale = Vector2(1, 0.96763)
 script = ExtResource("1_u2bwa")
 max_health = 3.0

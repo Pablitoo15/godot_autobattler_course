@@ -27,7 +27,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if timer_cutdown != null:
 		progres_bar.value = wave_time_waiting - timer_cutdown.time_left
-		print(timer_cutdown.time_left)
 	else:
 		if progres_bar.visible == true:
 			return
@@ -39,16 +38,19 @@ func _on_timer_timeout() -> void:
 	setup_timer()
 	
 func spawn_enemies():
-	var enemy_number: int = randi_range(enemies_to_spawn_min, enemies_to_spawn_max)
+	#var enemy_number: int = randi_range(enemies_to_spawn_min, enemies_to_spawn_max)
+	#for i in enemy_number:
+		#var rnd_enemy = enemy_to_spawn.pick_random()
 	var enemy_group = []
-	for i in enemy_number:
-		var rnd_enemy = enemy_to_spawn.pick_random()
-		var wave = rnd_enemy.instantiate()
-		parent_node.add_child(wave)
-		enemy_group = wave.get_children()
+	var rnd_enemy = enemy_to_spawn.pick_random()
+	var wave = rnd_enemy.instantiate()
+	parent_node.add_child(wave)
+	wave.global_position = global_position
 
-		for enemy_unit in enemy_group:
-			enemy_unit.reparent(parent_node)
+	enemy_group = wave.get_children()
+
+	for enemy_unit in enemy_group:
+		enemy_unit.reparent(parent_node)
 	
 	activate_enemies_with_delay(enemy_group)
 	if enemies_to_spawn_max > 1:

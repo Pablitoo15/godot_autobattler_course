@@ -5,40 +5,30 @@
 [node name="Wave_1A" type="Node2D"]
 
 [node name="enemy_mini" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 
 [node name="enemy_mini2" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(40, 0)
 
 [node name="enemy_mini3" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(-40, 0)
 
 [node name="enemy_mini4" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(-24, 40)
 
 [node name="enemy_mini5" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(24, 40)
 
 [node name="enemy_mini6" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(168, 56)
 
 [node name="enemy_mini10" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(0, 72)
 
 [node name="enemy_mini7" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(168, 16)
 
 [node name="enemy_mini8" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(-168, 56)
 
 [node name="enemy_mini9" parent="." instance=ExtResource("1_jyrf1")]
-process_mode = 4
 position = Vector2(-168, 16)

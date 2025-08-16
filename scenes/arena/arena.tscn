@@ -119,35 +119,14 @@ team_ally_tag = "team_ally_1"
 [node name="unit_ally" parent="arena_manager" instance=ExtResource("6_jx0ua")]
 position = Vector2(-9, 453)
 
-[node name="unit_ally2" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
-position = Vector2(-34, 450)
-
-[node name="unit_ally5" parent="arena_manager" instance=ExtResource("6_jx0ua")]
-position = Vector2(58, 421)
-
-[node name="unit_ally6" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
-position = Vector2(46, 452)
-
-[node name="unit_ally3" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
-position = Vector2(-40, 420)
-
-[node name="unit_ally4" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
-position = Vector2(-6, 419)
-
-[node name="unit_ally7" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
-position = Vector2(23, 450)
-
-[node name="unit_ally8" parent="arena_manager" groups=["team_ally_1"] instance=ExtResource("6_jx0ua")]
-position = Vector2(21, 421)
-
 [node name="enemy_spawner" parent="arena_manager" node_paths=PackedStringArray("parent_node") instance=ExtResource("10_2ml6w")]
 position = Vector2(0, 88)
 enemy_to_spawn = Array[PackedScene]([ExtResource("21_fir7s"), ExtResource("12_gy0qm"), ExtResource("9_l0cts")])
 enemies_to_spawn_min = 1
 enemies_to_spawn_max = 1
-wait_time_between_waves_min = 1111.0
-wait_time_between_waves_max = 11111.0
-wave_time_waiting = 10.0
+wait_time_between_waves_min = 40.0
+wait_time_between_waves_max = 50.0
+wave_time_waiting = 20.0
 parent_node = NodePath("..")
 
 [node name="base" parent="arena_manager" instance=ExtResource("10_fv88w")]
@@ -158,15 +137,6 @@ position = Vector2(136, 301)
 
 [node name="unit_ally_range" parent="arena_manager" instance=ExtResource("6_u52cf")]
 position = Vector2(165, 496)
-
-[node name="unit_ally_range2" parent="arena_manager" instance=ExtResource("6_u52cf")]
-position = Vector2(144, 496)
-
-[node name="unit_ally_range3" parent="arena_manager" instance=ExtResource("6_u52cf")]
-position = Vector2(-112, 504)
-
-[node name="unit_ally_range4" parent="arena_manager" instance=ExtResource("6_u52cf")]
-position = Vector2(-64, 504)
 
 [node name="arena_manager3" parent="." instance=ExtResource("5_asdgj")]
 position = Vector2(552, -24)
@@ -188,14 +158,14 @@ position = Vector2(0, 88)
 enemy_to_spawn = Array[PackedScene]([ExtResource("21_fir7s"), ExtResource("12_gy0qm"), ExtResource("9_l0cts")])
 enemies_to_spawn_min = 1
 enemies_to_spawn_max = 1
-wait_time_between_waves_min = 1111.0
-wait_time_between_waves_max = 11111.0
-wave_time_waiting = 10.0
-parent_node = NodePath("../../arena_manager")
+wait_time_between_waves_min = 25.0
+wait_time_between_waves_max = 35.0
+wave_time_waiting = 20.0
+parent_node = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(333, 255)
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.5, 0.5)
 
 [node name="area_order" parent="." node_paths=PackedStringArray("order_resource") instance=ExtResource("9_6w4xk")]
 position = Vector2(103, 249)
@@ -242,21 +212,43 @@ visible = false
 color = Color(0.446777, 0.446777, 0.446777, 1)
 
 [node name="ally_spawner" parent="." node_paths=PackedStringArray("where_to_spawn") instance=ExtResource("15_w4nra")]
-position = Vector2(336, 448)
+position = Vector2(320, 448)
 icon = ExtResource("16_rhjlh")
 unit = ExtResource("5_jx0ua")
 how_many_units = 1
 where_to_spawn = NodePath("../arena_manager")
 
 [node name="ally_spawner2" parent="." node_paths=PackedStringArray("where_to_spawn") instance=ExtResource("15_w4nra")]
-position = Vector2(336, 496)
+position = Vector2(320, 496)
 icon = ExtResource("17_8kk48")
 how_many_units = 1
 time_to_spawn = 6
 where_to_spawn = NodePath("../arena_manager")
 
 [node name="ally_spawner3" parent="." node_paths=PackedStringArray("where_to_spawn") instance=ExtResource("15_w4nra")]
-position = Vector2(336, 400)
+position = Vector2(320, 400)
+icon = ExtResource("18_wqbss")
+unit = ExtResource("6_jx0ua")
+how_many_units = 3
+time_to_spawn = 8
+where_to_spawn = NodePath("../arena_manager")
+
+[node name="ally_spawner4" parent="." node_paths=PackedStringArray("where_to_spawn") instance=ExtResource("15_w4nra")]
+position = Vector2(352, 448)
+icon = ExtResource("16_rhjlh")
+unit = ExtResource("5_jx0ua")
+how_many_units = 1
+where_to_spawn = NodePath("../arena_manager")
+
+[node name="ally_spawner5" parent="." node_paths=PackedStringArray("where_to_spawn") instance=ExtResource("15_w4nra")]
+position = Vector2(352, 496)
+icon = ExtResource("17_8kk48")
+how_many_units = 1
+time_to_spawn = 6
+where_to_spawn = NodePath("../arena_manager")
+
+[node name="ally_spawner6" parent="." node_paths=PackedStringArray("where_to_spawn") instance=ExtResource("15_w4nra")]
+position = Vector2(352, 400)
 icon = ExtResource("18_wqbss")
 unit = ExtResource("6_jx0ua")
 how_many_units = 3

@@ -17,6 +17,7 @@ fill_from = Vector2(1, 0)
 radius = 128.062
 
 [node name="unit_enemy" type="CharacterBody2D" groups=["enemy"]]
+process_mode = 4
 script = ExtResource("1_bvaff")
 max_health = 16.0
 speed = 45.0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://wfl3iqm8g73o"]
+
+[ext_resource type="Script" uid="uid://bgmi31mu4ae1h" path="res://end_game.gd" id="1_sjse8"]
+
+[node name="eng_game" type="Node2D"]
+script = ExtResource("1_sjse8")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -120.0
+offset_right = 128.0
+offset_bottom = 27.0
+max_value = 12.0
+step = 1.0
