@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu0wiaebfnewp"]
+
+[ext_resource type="PackedScene" uid="uid://c5yciv0xh7ghe" path="res://unit_enemy_range.tscn" id="1_3dblm"]
+[ext_resource type="PackedScene" uid="uid://c3ms5x7wbs4yt" path="res://unit_enemy_mini.tscn" id="2_3dblm"]
+
+[node name="wave_2a" type="Node2D"]
+
+[node name="enemy_range" parent="." instance=ExtResource("1_3dblm")]
+position = Vector2(-128, 0)
+
+[node name="enemy_range2" parent="." instance=ExtResource("1_3dblm")]
+position = Vector2(128, 0)
+
+[node name="enemy_mini" parent="." instance=ExtResource("2_3dblm")]
+position = Vector2(-64, 16)
+
+[node name="enemy_mini2" parent="." instance=ExtResource("2_3dblm")]
+position = Vector2(0, 16)
+
+[node name="enemy_mini3" parent="." instance=ExtResource("2_3dblm")]
+position = Vector2(64, 16)

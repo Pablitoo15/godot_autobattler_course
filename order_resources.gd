@@ -38,6 +38,6 @@ func try_start_timer():
 
 func _on_resource_timer_timeout() -> void:
 	cur_resource += 1
-	clampi(cur_resource, 0, max_resource)
+	cur_resource = clampi(cur_resource, 0, max_resource)
 	update_visuals()
 	try_start_timer()

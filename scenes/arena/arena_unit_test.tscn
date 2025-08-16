@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://suyqpv87d152"]
+[gd_scene load_steps=20 format=4 uid="uid://suyqpv87d152"]
 
 [ext_resource type="Script" uid="uid://dffldjblpw50h" path="res://scenes/arena/end_game.gd" id="1_rerti"]
 [ext_resource type="TileSet" uid="uid://c0chx1drw6ddt" path="res://scenes/arena/tileset.tres" id="2_ip6dv"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://spuiknbcpju2" path="res://rest_bench.tscn" id="14_eoy1l"]
 [ext_resource type="PackedScene" uid="uid://c7w2qp754nkpv" path="res://ally_spawner.tscn" id="15_ap7dc"]
 [ext_resource type="Texture2D" uid="uid://wxl68hk8ly55" path="res://assets/sprites/traits/fighter.png" id="16_lb0pu"]
+[ext_resource type="PackedScene" uid="uid://d101j1stkhquy" path="res://wave_2b.tscn" id="16_npdcs"]
 [ext_resource type="Texture2D" uid="uid://hakpdyod7nvy" path="res://assets/sprites/traits/ranger.png" id="17_uqpkr"]
 [ext_resource type="Texture2D" uid="uid://b1aup08or8bao" path="res://assets/sprites/traits/elf.png" id="18_vdieg"]
 [ext_resource type="PackedScene" uid="uid://dqiyfwrsw48ms" path="res://order_resources.tscn" id="19_c6blq"]
@@ -191,3 +192,6 @@ where_to_spawn = NodePath("../arena_manager")
 [node name="order_resources" parent="." instance=ExtResource("19_c6blq")]
 max_resource = 3
 time_to_reset_resource = 4.0
+
+[node name="wave_2b" parent="." instance=ExtResource("16_npdcs")]
+position = Vector2(239, 93)

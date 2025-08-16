@@ -28,11 +28,13 @@ func _ready() -> void:
 	wait_before_attack = attack_interval
 	set_progres_bar()
 	
-	if self.is_in_group("enemy") or self.is_in_group("base"):
+
+	#
+func _process(delta: float) -> void:
+	#Nasty hack which I don't like or support
+	if self.is_in_group("enemy") or self.is_in_group("base") and arena_manager == null:
 		arena_manager = get_parent()
 		arena_manager.add_to_list(self)
-	
-func _process(delta: float) -> void:
 	#if cur_state == State.idle:
 		#return
 		

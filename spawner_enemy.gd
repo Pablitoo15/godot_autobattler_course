@@ -13,6 +13,9 @@ extends Node2D
 
 func _ready() -> void:
 	setup_timer()
+	#temtemtemp!
+	await get_tree().create_timer(0.5).timeout
+	spawn_enemies()
 
 
 func _on_timer_timeout() -> void:
@@ -21,15 +24,25 @@ func _on_timer_timeout() -> void:
 	
 func spawn_enemies():
 	var enemy_number: int = randi_range(enemies_to_spawn_min, enemies_to_spawn_max)
+	var enemy_group = []
 	for i in enemy_number:
 		var rnd_enemy = enemy_to_spawn.pick_random()
-		var enemy = rnd_enemy.instantiate() as CharacterBody2D
-		parent_node.add_child(enemy)
-		enemy.global_position = sprite.global_position + i * Vector2(10, 0)
+		var wave = rnd_enemy.instantiate()
+		parent_node.add_child(wave)
+		enemy_group = wave.get_children()
+
+		for enemy_unit in enemy_group:
+			enemy_unit.reparent(parent_node)
 	
+	activate_enemies_with_delay(enemy_group, 5)
 	if enemies_to_spawn_max > 1:
 		enemies_to_spawn_max += 1
 		
+func activate_enemies_with_delay(enemy_group: Array, delay: float):
+	await get_tree().create_timer(delay).timeout
+	for enemy_unit in enemy_group:
+		enemy_unit.process_mode = Node.PROCESS_MODE_INHERIT
+
 func setup_timer():
 	timer_time = randf_range(wait_time_between_waves_min, wait_time_between_waves_max)
 	timer.wait_time = timer_time
