@@ -19,4 +19,11 @@ texture = ExtResource("1_vwhfw")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -28.0
+offset_top = 11.0
+offset_right = 31.0
+offset_bottom = 38.0
+max_value = 10.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
