@@ -9,10 +9,11 @@ var team_enemy: Array[Node]
 
 @onready var collison_change_teams = $Area2D/CollisionShape2D
 
+signal wave_beaten
+
 func _ready() -> void:
 	team_ally = get_tree().get_nodes_in_group(team_ally_tag)
 	team_enemy = get_tree().get_nodes_in_group(team_enemy_tag)
-
 func get_closest_enemy(unit: Node2D):
 	var closest: Node2D = null
 	var closes_yet:= INF
@@ -33,10 +34,14 @@ func get_closest_enemy(unit: Node2D):
 	return closest
 
 func unit_die(unit: Node2D):
+	print("unit that died: " + str(unit.name))
 	if unit.is_in_group(team_ally_tag):
 		team_ally.erase(unit)
-	else:
+	elif unit.is_in_group("enemy"):
 		team_enemy.erase(unit)
+		if team_enemy.size() == 0:
+			print("no enemy left")
+			wave_beaten.emit()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

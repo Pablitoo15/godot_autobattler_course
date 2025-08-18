@@ -9,5 +9,6 @@ script = ExtResource("1_sjse8")
 offset_left = -120.0
 offset_right = 128.0
 offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.211765, 0.945098, 0.231373, 1)
 max_value = 12.0
 step = 1.0

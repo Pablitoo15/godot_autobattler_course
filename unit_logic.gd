@@ -32,9 +32,13 @@ func _ready() -> void:
 	#
 func _process(delta: float) -> void:
 	#Nasty hack which I don't like or support
-	if self.is_in_group("enemy") or self.is_in_group("base") and arena_manager == null:
-		arena_manager = get_parent()
-		arena_manager.add_to_list(self)
+	if self.is_in_group("enemy") or self.is_in_group("base"):
+		if arena_manager == null:
+			arena_manager = get_parent()
+			if arena_manager:
+				arena_manager.add_to_list(self)
+			else:
+				print("ERROR - unit logic")
 	#if cur_state == State.idle:
 		#return
 		
@@ -144,7 +148,6 @@ func set_progres_bar():
 	
 	
 func new_parent_arena(new_arena_manger: Arena_Manager):
-	print("new arena manager")
 	if arena_manager:
 		arena_manager.unit_die(self)
 	arena_manager = new_arena_manger
@@ -165,8 +168,7 @@ func turn_on_shader(is_true: bool):
 		sprite.material = null
 
 func set_defend_post(new_defened_pos: Vector2):
-	if defend_pos != new_defened_pos:
-		print("new defend point!")
+
 	defend_pos =  new_defened_pos
 	
 	
