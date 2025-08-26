@@ -176,7 +176,7 @@ parent_node = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(333, 255)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.7, 0.7)
 
 [node name="area_order" parent="." node_paths=PackedStringArray("order_resource") instance=ExtResource("9_6w4xk")]
 position = Vector2(103, 249)
