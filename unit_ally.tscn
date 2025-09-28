@@ -1,15 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci101ckb317ov"]
+[gd_scene load_steps=5 format=3 uid="uid://ci101ckb317ov"]
 
 [ext_resource type="Script" uid="uid://ce5dmd0paox2l" path="res://unit_logic.gd" id="1_bvaff"]
+[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="2_dkkyr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xs68s"]
 radius = 20.3961
-
-[sub_resource type="Gradient" id="Gradient_k4y1u"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_btf8p"]
-gradient = SubResource("Gradient_k4y1u")
-fill_from = Vector2(1, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctwoc"]
 radius = 128.06
@@ -29,7 +24,10 @@ shape = SubResource("CircleShape2D_xs68s")
 scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="2d"]
-texture = SubResource("GradientTexture2D_btf8p")
+scale = Vector2(4, 4)
+texture = ExtResource("2_dkkyr")
+region_enabled = true
+region_rect = Rect2(0, 0, 29.9252, 32.5441)
 
 [node name="Area2D" type="Area2D" parent="2d"]
 
